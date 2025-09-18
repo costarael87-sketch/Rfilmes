@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R Filmes - Filmes, Séries e Animes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+  <div class="login-screen active" id="login-screen">
+    <div class="login-container">
+      <img src="logo.png" alt="R Filmes Logo" class="logo-img">
+      <h1 class="logo">R Filmes</h1>
+      <form id="user-login-form">
+        <input type="text" id="username" placeholder="Usuário" required>
+        <input type="password" id="password" placeholder="Senha" required>
+        <button type="submit" class="btn">Entrar</button>
+      </form>
+
+      <h2 class="admin-title">Administrador</h2>
+      <form id="admin-login-form">
+        <input type="email" id="admin-email" placeholder="E-mail do Admin" required>
+        <input type="password" id="admin-password" placeholder="Senha do Admin" required>
+        <button type="submit" class="btn btn-secondary">Entrar Admin</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Painel Admin -->
+  <section id="admin-panel" class="page">
+    <div class="admin-container">
+      <h2>Painel de Administração</h2>
+      <div id="admin-content">
+        <form id="add-user-form">
+          <input type="text" id="new-username" placeholder="Novo Usuário" required>
+          <input type="password" id="new-password" placeholder="Nova Senha" required>
+          <button type="submit" class="btn">Adicionar Usuário</button>
+        </form>
+
+        <form id="create-trial-form">
+          <input type="text" id="trial-username" placeholder="Usuário para teste" required>
+          <button type="submit" class="btn">Criar Teste 1h</button>
+        </form>
+
+        <ul id="user-list"></ul>
+
+        <button id="logout-btn" class="btn btn-secondary">Sair</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Home -->
+  <section id="home-page" class="page">
+    <header>
+      <h1 class="logo">R Filmes</h1>
+    </header>
+    <div class="content-container">
+      <h2>Filmes</h2>
+      <div class="media-grid">
+        <div class="media-card" data-url="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" onclick="openPlayer(this)">
+          <img src="https://image.tmdb.org/t/p/w500/1E5baWaGhLhkDhiqeheNNfLdJ56.jpg" alt="Vingadores">
+          <div class="card-info"><h3>Vingadores: Ultimato</h3></div>
+        </div>
+        <div class="media-card" data-url="https://www.youtube.com/embed/t433PEQGErc?autoplay=1" onclick="openPlayer(this)">
+          <img src="https://image.tmdb.org/t/p/w500/7WLTW26g5rC2R0d5b5W9l4y5c9.jpg" alt="Poderoso Chefão">
+          <div class="card-info"><h3>O Poderoso Chefão</h3></div>
+        </div>
+      </div>
+    </div>
+    <div id="video-player-overlay" class="player-overlay">
+      <div class="player-container">
+        <button class="close-btn" onclick="closePlayer()">X</button>
+        <iframe id="video-player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
