@@ -1,81 +1,111 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>R Filmes - Filmes, Séries e Animes</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Filmes - Filmes, Séries e Animes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body class="dark-theme">
-
-  <div class="login-screen active" id="login-screen">
-    <div class="login-container">
-      <img src="logo.png" alt="R Filmes Logo" class="logo-img">
-      <h1 class="logo">R Filmes</h1>
-      <form id="user-login-form">
-        <input type="text" id="username" placeholder="Usuário" required>
-        <input type="password" id="password" placeholder="Senha" required>
-        <button type="submit" class="btn">Entrar</button>
-      </form>
-
-      <h2 class="admin-title">Administrador</h2>
-      <form id="admin-login-form">
-        <input type="email" id="admin-email" placeholder="E-mail do Admin" required>
-        <input type="password" id="admin-password" placeholder="Senha do Admin" required>
-        <button type="submit" class="btn btn-secondary">Entrar Admin</button>
-      </form>
+<body>
+    <div class="theme-toggle" id="theme-toggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
     </div>
-  </div>
-
-  <!-- Painel Admin -->
-  <section id="admin-panel" class="page">
-    <div class="admin-container">
-      <h2>Painel de Administração</h2>
-      <div id="admin-content">
-        <form id="add-user-form">
-          <input type="text" id="new-username" placeholder="Novo Usuário" required>
-          <input type="password" id="new-password" placeholder="Nova Senha" required>
-          <button type="submit" class="btn">Adicionar Usuário</button>
-        </form>
-
-        <form id="create-trial-form">
-          <input type="text" id="trial-username" placeholder="Usuário para teste" required>
-          <button type="submit" class="btn">Criar Teste 1h</button>
-        </form>
-
-        <ul id="user-list"></ul>
-
-        <button id="logout-btn" class="btn btn-secondary">Sair</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Home -->
-  <section id="home-page" class="page">
-    <header>
-      <h1 class="logo">R Filmes</h1>
-    </header>
-    <div class="content-container">
-      <h2>Filmes</h2>
-      <div class="media-grid">
-        <div class="media-card" data-url="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" onclick="openPlayer(this)">
-          <img src="https://image.tmdb.org/t/p/w500/1E5baWaGhLhkDhiqeheNNfLdJ56.jpg" alt="Vingadores">
-          <div class="card-info"><h3>Vingadores: Ultimato</h3></div>
+    <main id="login-screen" class="active">
+        <div class="login-container">
+            <h1 class="logo">R Filmes</h1>
+            <h2 class="welcome-message">Bem-vindo ao R Filmes</h2>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Usuário" required>
+                <input type="password" id="password" placeholder="Senha" required>
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+            <button id="admin-access-btn" class="btn btn-secondary">Acesso Administrador</button>
         </div>
-        <div class="media-card" data-url="https://www.youtube.com/embed/t433PEQGErc?autoplay=1" onclick="openPlayer(this)">
-          <img src="https://image.tmdb.org/t/p/w500/7WLTW26g5rC2R0d5b5W9l4y5c9.jpg" alt="Poderoso Chefão">
-          <div class="card-info"><h3>O Poderoso Chefão</h3></div>
+    </main>
+    <section id="admin-panel" class="page">
+        <div class="admin-container">
+            <h2>Painel de Administração</h2>
+            <form id="admin-login-form">
+                <input type="email" id="admin-email" placeholder="E-mail" required>
+                <input type="password" id="admin-password" placeholder="Senha" required>
+                <button type="submit" class="btn">Login Admin</button>
+            </form>
+            <div id="admin-content" style="display: none;">
+                <div class="admin-section">
+                    <h3>Gerenciar Usuários</h3>
+                    <form id="add-user-form">
+                        <input type="text" id="new-username" placeholder="Novo Usuário" required>
+                        <input type="password" id="new-password" placeholder="Nova Senha" required>
+                        <button type="submit" class="btn">Adicionar Usuário</button>
+                    </form>
+                    <ul id="user-list"></ul>
+                </div>
+                <div class="admin-section">
+                    <h3>Criar Teste Gratuito</h3>
+                    <form id="create-trial-form">
+                        <input type="text" id="trial-username" placeholder="Usuário para teste" required>
+                        <button type="submit" class="btn">Criar Teste de 1h</button>
+                    </form>
+                </div>
+                <button id="logout-btn" class="btn btn-secondary">Sair do Painel</button>
+            </div>
         </div>
-      </div>
-    </div>
-    <div id="video-player-overlay" class="player-overlay">
-      <div class="player-container">
-        <button class="close-btn" onclick="closePlayer()">X</button>
-        <iframe id="video-player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-    </div>
-  </section>
-
-  <script src="script.js"></script>
+    </section>
+    <section id="home-page" class="page">
+        <header>
+            <nav class="main-nav">
+                <h1 class="logo">R Filmes</h1>
+                <ul>
+                    <li><a href="#home-page" class="nav-link">Home</a></li>
+                    <li><a href="#movies-section" class="nav-link">Filmes</a></li>
+                    <li><a href="#series-section" class="nav-link">Séries</a></li>
+                    <li><a href="#animes-section" class="nav-link">Animes</a></li>
+                    <li><a href="https://wa.me/5583988942232" target="_blank" class="nav-link">Contato WhatsApp</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="content-container">
+            <section id="movies-section" class="media-section">
+                <h2>Filmes</h2>
+                <div class="media-grid">
+                    <div class="media-card" data-url="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" onclick="openPlayer(this)">
+                        <img src="https://image.tmdb.org/t/p/w500/1E5baWaGhLhkDhiqeheNNfLdJ56.jpg" alt="Filme 1">
+                        <div class="card-info"><h3>Vingadores: Ultimato</h3></div>
+                    </div>
+                </div>
+            </section>
+            <section id="series-section" class="media-section">
+                <h2>Séries</h2>
+                <div class="media-grid">
+                    <div class="media-card" data-url="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" onclick="openPlayer(this)">
+                        <img src="https://image.tmdb.org/t/p/w500/7Wf0G5h8Ld885Pj9798jGg7i7xK.jpg" alt="Série 1">
+                        <div class="card-info"><h3>Stranger Things</h3></div>
+                    </div>
+                </div>
+            </section>
+            <section id="animes-section" class="media-section">
+                <h2>Animes</h2>
+                <div class="media-grid">
+                    <div class="media-card" data-url="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" onclick="openPlayer(this)">
+                        <img src="https://image.tmdb.org/t/p/w500/iJvxE3h1Jt9YjT4B3X7zYyT3c14.jpg" alt="Anime 1">
+                        <div class="card-info"><h3>One Punch Man</h3></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="video-player-overlay" class="player-overlay">
+            <div class="player-container">
+                <button class="close-btn" onclick="closePlayer()">X</button>
+                <iframe id="video-player" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
 </body>
 </html>
